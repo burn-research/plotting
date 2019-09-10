@@ -1,2 +1,3 @@
-# plotting
-Plotting library of Matlab functions.
+# Plotting (p)
+
+This is a library of Matlab functions for general plotting of results.
