@@ -1,3 +1,9 @@
-# Plotting (p)
+# Plotting functions
 
-This is a library of Matlab functions for general plotting of results.
+## Match LaTeX style
+
+```matlab
+set(groot, 'DefaultTextInterpreter', 'LaTex');
+set(groot, 'DefaultLegendInterpreter', 'LaTex');
+set(groot, 'DefaultAxesTickLabelInterpreter', 'LaTex');
+```
