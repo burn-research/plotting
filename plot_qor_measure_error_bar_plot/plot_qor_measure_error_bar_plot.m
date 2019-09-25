@@ -126,7 +126,7 @@ end
 % Plotting parameters:
 n_modes = size(qor_matrix, 1)/n_subs;
 range = 1:1:n_modes;
-fontsize_axes = 32;
+fontsize_axes = 28;
 fontsize_label = 44;
 fontsize_legend = 40;
 marker_size = 8;
@@ -156,11 +156,11 @@ for line = 1:1:n_subs
     set(gca, 'FontSize', fontsize_axes)
     xlabel('Number of modes [-]', 'FontSize', fontsize_label)
     ylabel([qor_name, ' [-]'], 'FontSize', fontsize_label)
+    xlim([min(range)-1, max(range)+1])
+    xticks(range)
     if ylim_flag == 1
         ylim(y_limits)
     end
-    xlim([min(range)-1, max(range)+1])
-    xticks(range)
     if yticks_flag == 1
         yticks(y_ticks)
     end
