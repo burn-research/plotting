@@ -18,6 +18,15 @@ function [] = plot_3d_variable_reconstruction(x, y, z_original, z_reconstructed,
 %         the reconstruction of the original variable on the z-axis.
 %         (Will be coloured in red.)
 %
+% - x_name
+%         label for the variable on the x-axis.
+%
+% - y_name
+%         label for the variable on the y-axis.
+%
+% - z_name
+%         label for the variable on the z-axis.
+%
 % - camera_view
 %         view of the camera on the 3D plot.
 %
