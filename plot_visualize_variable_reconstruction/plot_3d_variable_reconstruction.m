@@ -1,4 +1,4 @@
-function [] = plot_3d_variable_reconstruction(x, y, z_original, z_reconstructed, camera_view, destination)
+function [] = plot_3d_variable_reconstruction(x, y, z_original, z_reconstructed, x_name, y_name, z_name, camera_view, destination)
 % This function plots a 3D scatter visualization of a variable reconstruction.
 %
 % Input:
@@ -27,6 +27,52 @@ function [] = plot_3d_variable_reconstruction(x, y, z_original, z_reconstructed,
 %         Example: destination = 'PLOTS/'
 
 %% plot_3d_variable_reconstruction
+% Checks:
+if isempty(destination)
+    destination = '';
+end
 
+if isempty(x_name)
+    x_name = '$x$';
+end
+
+if isempty(y_name)
+    y_name = '$y$';
+end
+
+if isempty(z_name)
+    z_name = '$z$';
+end
+
+% Plotting parameters:
+marker_size_original = 1;
+marker_size_reconstructed = 3;
+original_c = [0 0 0]./256;
+reconstruction_c = [255,111,89]./256;
+fontsize_axes = 22;
+fontsize_label = 30;
+fontsize_legend = 26;
+fontsize_ann = 32;
+text_size = 26;
+
+figure();
+set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, 0.8, 0.8]);
+scatter3(x, y, z_original, marker_size_original, original_c, 'o', 'filled'), hold on
+scatter3(x, y, z_reconstructed, marker_size_reconstructed, reconstruction_c, 'o', 'filled')
+set(gca, 'FontSize', fontsize_axes)
+xlabel([x_name], 'FontSize', fontsize_label)
+ylabel([y_name], 'FontSize', fontsize_label)
+zlabel([z_name], 'FontSize', fontsize_label)
+grid on
+if isempty(camera_view)
+    view();
+else
+    view(camera_view);
+end
+
+% Save plot:
+filename = [destination, '_3d_variable_reconstruction.png'];
+saveas(gcf, filename, 'png');
+hold off
 
 end
