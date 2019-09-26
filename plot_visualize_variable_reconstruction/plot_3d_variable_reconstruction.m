@@ -45,8 +45,9 @@ if isempty(z_name)
 end
 
 % Plotting parameters:
-marker_size_original = 1;
-marker_size_reconstructed = 3;
+marker_size_original = 3;
+marker_size_reconstructed = 5;
+marker_size_legend = 15;
 original_c = [0 0 0]./256;
 reconstruction_c = [255,111,89]./256;
 fontsize_axes = 22;
@@ -69,6 +70,16 @@ if isempty(camera_view)
 else
     view(camera_view);
 end
+
+[l, hobj, hout, mout] = legend({'Original', 'Reconstructed'}, 'Location', 'northwest', 'FontSize', fontsize_legend);
+
+M = findobj(hobj, 'type', 'patch');
+set(M, 'MarkerSize', marker_size_legend);
+
+objhl = findobj(hobj, 'type', 'text');
+set(objhl, 'FontSize', fontsize_legend);
+set(objhl, 'FontName', 'cmr10')
+set(objhl, 'interpreter', 'latex')
 
 % Save plot:
 filename = [destination, '_3d_variable_reconstruction.png'];
