@@ -91,7 +91,7 @@ set(objhl, 'FontName', 'cmr10')
 set(objhl, 'interpreter', 'latex')
 
 % Save plot:
-filename = [destination, '_3d_variable_reconstruction.png'];
+filename = [destination, '3d_variable_reconstruction.png'];
 saveas(gcf, filename, 'png');
 hold off
 
