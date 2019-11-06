@@ -1,103 +1,103 @@
 function [] = plot_eigenvector_weights_bar_plot(A, n_mode_sets, n_request_eigvecs, mode_name, annotations, labels, colors, destination, prefix)
-%{
- -------------------------------------------------------------------------
-
-This function plots annotated bar plots from eigenvector weights.
-
-If `n_mode_sets` is larger than 1 it will plot a comaprison of modes from
-more than one mode set. Mode sets should be stacked one below the other
-in a matrix `A`.
-
- Input parameters: -------------------------------------------------------
-
-- A
-
-    a matrix with eigenvectors.
-    This matrix needs to be composed of vertically stacked sub-matrices
-    (mode sets):
-
-      Eigvec-1     Eigvec-N
-    [                       ] weight 1
-    [                       ] weight 2
-    [                       ]   .
-    [       Mode set 1      ]   .
-    [                       ]   .
-    [                       ]   .
-    [                       ] weight M
-     -----------------------
-    [                       ] weight 1
-               ...
-
-    Each such sub-matrix is associated with one label, marker and color.
-
-    It is assumed that all mode sets have the same dimensions.
-
-- n_mode_sets
-
-    is an integer specifying the number of mode sets stacked into matrix A.
-
-- n_request_eigvecs
-
-    is an integer specifying the number of first eigenvectors requested for
-    plotting.
-
-- mode_name
-
-    is a string specifying the mode name. It will be visible in as the
-    y-axis label and as the plot filename.
-
-    Example: mode_name = 'PC'
-
-- annotations
-
-    is a cell array of strings that annotates bars. It will be visible as
-    the x-axis labels.
-
-    Example: annotations = {'Bar-1', 'Bar-2', 'Bar-3', 'Bar-4'}
-
-    NOTE: If annotations is set to {}, the DNS1 annotations will be used:
-
-    annotations = {'$\rm{T}$', '$\rm{H_2}$', '$\rm{O_2}$', '$\rm{O}$',
-    '$\rm{OH}$', '$\rm{H_2O}$', '$\rm{H}$', '$\rm{HO_2}$', '$\rm{H_2O_2}$',
-    '$\rm{CO}$', '$\rm{CO_2}$', '$\rm{HCO}$', '$\rm{N_2}$'};
-
-- labels
-
-    is a cell array of strings that labels the mode sets. It will be 
-    visible in the plot legend.
-
-    Example: labels = {'Set-1', 'Set-2'}
-
-    NOTE: If labels is set to {}, no legend will be made.
-
-- colors
-
-    is a matrix of RGB vectors that specify colors for the consecutive
-    mode sets bars.
-
-    Example: colors = [
-                      [0 0 0]
-                      [0.4660 0.6740 0.1880]
-                      [0 0.4470 0.7410]
-                      [0.8500 0.3250 0.0980]]
-
-    NOTE: If colors is set to {}, the default grayscale will be used.
-
-- destination
-
-    is a string specifying the plot saving destination.
-
-    Example: destination = 'PLOTS/'
-
-- prefix
-
-    is a string specifying the prefix that will be added to label the
-    y-axis.
-    
-    Example: prefix = ' in cluster 1'
-
- -------------------------------------------------------------------------
-%}
+% This function plots annotated bar plots from eigenvector weights.
+%
+% If `n_mode_sets` is larger than 1 it will plot a comaprison of modes from
+% more than one mode set. Mode sets should be stacked one below the other
+% in a matrix `A`.
+%
+% For quick plotting of just one set call the function with only A and n_request_eigvecs:
+%
+% plot_eigenvector_weights_bar_plot(A, 1, n_request_eigvecs, '', {}, {}, {}, '', '')
+%
+% Input:
+% ------------
+% - A
+%
+%     a matrix with eigenvectors.
+%     This matrix needs to be composed of vertically stacked sub-matrices
+%     (mode sets):
+%
+%       Eigvec-1     Eigvec-N
+%     [                       ] weight 1
+%     [                       ] weight 2
+%     [                       ]   .
+%     [       Mode set 1      ]   .
+%     [                       ]   .
+%     [                       ]   .
+%     [                       ] weight M
+%      -----------------------
+%     [                       ] weight 1
+%                ...
+%
+%     Each such sub-matrix is associated with one label, marker and color.
+%
+%     It is assumed that all mode sets have the same dimensions.
+%
+% - n_mode_sets
+%
+%     is an integer specifying the number of mode sets stacked into matrix A.
+%
+% - n_request_eigvecs
+%
+%     is an integer specifying the number of first eigenvectors requested for
+%     plotting.
+%
+% - mode_name
+%
+%     is a string specifying the mode name. It will be visible in as the
+%     y-axis label and as the plot filename.
+%
+%     Example: mode_name = 'PC'
+%
+% - annotations
+%
+%     is a cell array of strings that annotates bars. It will be visible as
+%     the x-axis labels.
+%
+%     Example: annotations = {'Bar-1', 'Bar-2', 'Bar-3', 'Bar-4'}
+%
+%     NOTE: If annotations is set to {}, the default annotations will be used.
+%
+%     DNS1 annotations are:
+%
+%     annotations = {'$\rm{T}$', '$\rm{H_2}$', '$\rm{O_2}$', '$\rm{O}$',
+%     '$\rm{OH}$', '$\rm{H_2O}$', '$\rm{H}$', '$\rm{HO_2}$', '$\rm{H_2O_2}$',
+%     '$\rm{CO}$', '$\rm{CO_2}$', '$\rm{HCO}$', '$\rm{N_2}$'};
+%
+% - labels
+%
+%     is a cell array of strings that labels the mode sets. It will be
+%     visible in the plot legend.
+%
+%     Example: labels = {'Set-1', 'Set-2'}
+%
+%     NOTE: If labels is set to {}, no legend will be made.
+%
+% - colors
+%
+%     is a matrix of RGB vectors that specify colors for the consecutive
+%     mode sets bars.
+%
+%     Example: colors = [
+%                       [0 0 0]
+%                       [0.4660 0.6740 0.1880]
+%                       [0 0.4470 0.7410]
+%                       [0.8500 0.3250 0.0980]]
+%
+%     NOTE: If colors is set to {}, the default grayscale will be used.
+%
+% - destination
+%
+%     is a string specifying the plot saving destination.
+%
+%     Example: destination = 'PLOTS/'
+%
+% - prefix
+%
+%     is a string specifying the prefix that will be added to label the
+%     y-axis.
+%
+%     Example: prefix = ' in cluster 1'
 
 %% Checks:
 [n_weights, n_eigvecs] = size(A);
@@ -112,9 +112,17 @@ if ~exist('destination') || isempty(destination)
     destination = '';
 end
 
-% Use DNS1 annotations:
+% Create default mode name:
+if isempty(mode_name)
+    mode_name = 'mode';
+end
+
+% Create default annotations:
 if isempty(annotations)
-    annotations = {'$\rm{T}$', '$\rm{H_2}$', '$\rm{O_2}$', '$\rm{O}$', '$\rm{OH}$', '$\rm{H_2O}$', '$\rm{H}$', '$\rm{HO_2}$', '$\rm{H_2O_2}$', '$\rm{CO}$', '$\rm{CO_2}$', '$\rm{HCO}$', '$\rm{N_2}$'};
+    annotations = {'$\rm{W_1}$'};
+    for i = 2:1:n_weights
+        annotations = [annotations, ['$\rm{W_{', num2str(i), '}}$']];
+    end
 end
 
 % Create default grayscale colors:
@@ -188,7 +196,6 @@ for i=1:1:n_request_eigvecs
             y_pos = 0.05;
             text(x_pos, y_pos, char(annotations(int)), 'FontSize', text_size, 'Rotation', 90, 'HorizontalAlignment', 'left');
         end
-
     end
 
     xticklabels([]); yticks(-1:0.2:1)
@@ -197,9 +204,9 @@ for i=1:1:n_request_eigvecs
     grid 'on'
 
     if n_mode_sets > 1
-        
+
         if ~isempty(labels)
-            
+
             % Create legend from labels:
             l = cell(1, n_mode_sets);
 
@@ -208,13 +215,11 @@ for i=1:1:n_request_eigvecs
             end
 
             legend(b, l, 'Location', 'southeast', 'FontSize', fontsize_legend, 'Orientation', 'horizontal');
-            
         end
-        
     end
-    
+
     % Save plot:
-    filename = [destination, mode_name, '_', num2str(i), '.eps'];
+    filename = [destination, mode_name, '_', num2str(i), '.png'];
     saveas(gcf, filename, 'epsc');
 
 end
