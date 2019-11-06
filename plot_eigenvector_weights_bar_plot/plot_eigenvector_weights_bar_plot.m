@@ -220,7 +220,7 @@ for i=1:1:n_request_eigvecs
 
     % Save plot:
     filename = [destination, mode_name, '_', num2str(i), '.png'];
-    saveas(gcf, filename, 'epsc');
+    saveas(gcf, filename, 'png');
 
 end
 end

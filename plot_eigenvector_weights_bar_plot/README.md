@@ -21,7 +21,6 @@ A = [1; 0.7; 0.1; -0.1; 0.4;
 n_request_eigvecs = 1;
 
 plot_eigenvector_weights_bar_plot(A, 1, n_request_eigvecs, '', {}, {}, {}, '', '');
-
 ```
 
 ![Screenshot](quick_example.png)
