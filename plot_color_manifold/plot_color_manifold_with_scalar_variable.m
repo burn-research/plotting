@@ -58,7 +58,7 @@ cb.FontSize = fontsize_colorbar;
 cb.FontName = 'cmr10';
 
 % Save plot:
-filename = [destination, scalar_name, '_colored_manifold.eps'];
-saveas(gcf, filename, 'epsc');
+filename = [destination, scalar_name, '_colored_manifold.png'];
+saveas(gcf, filename, 'png');
 
 end
