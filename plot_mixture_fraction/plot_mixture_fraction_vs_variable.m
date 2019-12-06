@@ -1,4 +1,4 @@
-function [] = plot_mixture_fraction_vs_variable(var, Z, var_name, destination)
+function [] = plot_mixture_fraction_vs_variable(var, Z, var_name, y_label_text, destination)
 %{
 This function plots a scatter plot of mixture fraction vs. a variable of choice.
 NOTE: It performs random sampling from the mixture fraction pool.
@@ -34,7 +34,7 @@ set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, 0.7, 1]);
 scatter(var_Z(var_Z_sampled, 1), var_Z(var_Z_sampled, 2), marker_size, 'k', '.');
 set(gca, 'FontSize', fontsize_axes); box on; grid on
 xlabel(['Mixture fraction [-]'], 'FontSize', fontsize_label)
-ylabel([var_name, ' [-]'], 'FontSize', fontsize_label)
+ylabel(y_label_text, 'FontSize', fontsize_label)
 xlim([-0.02, 1.02])
 ylim([1.05*min(var), 1.05*max(var)])
 

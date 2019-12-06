@@ -1,4 +1,4 @@
-function [] = plot_mixture_fraction_divided_to_clusters(T, Z, idx, np, destination)
+function [] = plot_mixture_fraction_divided_to_clusters(T, Z, idx, np, y_label_text, destination)
 % This function plots mixture fraction vs. a variable of choice.
 % NOTE: It performs random sampling from the mixture fraction pool to avoid plotting large number of points.
 % 
@@ -62,7 +62,7 @@ set(objhl, 'FontSize', fontsize_legend);
 set(objhl, 'FontName', 'cmr10')
 set(objhl, 'interpreter', 'latex')
 
-xlabel(['Z [-]'], 'FontSize', fontsize_label), ylabel(['T [K]'], 'FontSize', fontsize_label);
+xlabel(['Mixture fraction [-]'], 'FontSize', fontsize_label), ylabel([y_label_text], 'FontSize', fontsize_label);
 hold off
 
 % Save plot:

@@ -1,4 +1,4 @@
-function [] = plot_mixture_fraction_vs_variable_colored_manifold(Z, var, var_color, var_name, legend_text, destination)
+function [] = plot_mixture_fraction_vs_variable_colored_manifold(Z, var, var_color, var_name, y_label_text, legend_text, destination)
 %{
 This function plots a scatter plot of mixture fraction vs. a variable of choice.
 NOTE: It performs random sampling from the mixture fraction pool.
@@ -39,9 +39,10 @@ range_x = max(Z)*0.05;
 range_y = max(var)*0.05;
 xlim([min(Z)-range_x, max(Z)+range_x]), ylim([min(var)-range_y, max(var)+range_y]);
 xticks(0:0.2:1)
-xlabel(['Mixture fraction [-]'], 'FontSize', fontsize_label), ylabel([var_name, ' [-]'], 'FontSize', fontsize_label);
+xlabel(['Mixture fraction [-]'], 'FontSize', fontsize_label), ylabel(y_label_text, 'FontSize', fontsize_label);
+dummyh = line(nan, nan, 'Linestyle', 'none', 'Marker', 'none', 'Color', 'none');
 
-[l, hobj, hout, mout] = legend({legend_text}, 'Location', 'northeast', 'FontSize', fontsize_legend);
+[l, hobj, hout, mout] = legend(dummyh, {legend_text}, 'Location', 'northeast', 'FontSize', fontsize_legend);
 
 M = findobj(hobj, 'type', 'patch');
 set(M, 'MarkerSize', 25);
