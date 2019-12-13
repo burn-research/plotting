@@ -1,4 +1,6 @@
-# Plotting functions
+# ![Logo](documentation/burn_logo.png?thumbnail) Plotting functions
+
+This is a collection of Matlab for plotting scientific results.
 
 ## Match LaTeX style
 
