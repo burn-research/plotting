@@ -1,23 +1,23 @@
 function [] = plot_mixture_fraction_divided_to_clusters(T, Z, idx, np, y_label_text, destination)
 % This function plots mixture fraction vs. a variable of choice.
 % NOTE: It performs random sampling from the mixture fraction pool to avoid plotting large number of points.
-% 
+%
 % Inputs: ---
-% 
+%
 % - T
 %     variable data vector.
-% 
+%
 % - Z
 %     mixture fraction data vector.
-% 
+%
 % - idx
 %     matrix of cluster division.
-% 
+%
 % - np
 %     number of points for random sampling from the mixture fraction
 %     pool. This is done to avoid plotting a large number of points.
 %     If set to 0, all points will be plotted.
-% 
+%
 % - destination
 %     plot saving destination.
 
@@ -45,7 +45,7 @@ for i = 1:1:k
     end
 
     % Append to legend:
-    legend_labels{i} = ['Cluster $k_', num2str(i), '$'];
+    legend_labels{i} = ['Cluster $k_{', num2str(i), '}$'];
 
 end
 
