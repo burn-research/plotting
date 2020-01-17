@@ -8,10 +8,10 @@ This function plots annotated bar plots from **normalized** eigenvector weights.
 
 ## Example quick plotting
 
-For quick plotting of just one set call the function with only `A` and `n_request_eigvecs`:
+For quick plotting of just one set call the function with only `A`, `n_mode_sets=1` and `n_request_eigvecs`:
 
 ```matlab
-plot_eigenvector_weights_bar_plot(A, 1, n_request_eigvecs, '', {}, {}, {}, '', '')
+plot_eigenvector_weights_bar_plot(A, 1, n_request_eigvecs)
 ```
 
 ```matlab
@@ -19,7 +19,7 @@ A = [1; 0.7; 0.1; -0.1; 0.4;
     0.9; 0.8; 0.09; -0.09; 0.45];
 n_request_eigvecs = 1;
 
-plot_eigenvector_weights_bar_plot(A, 1, n_request_eigvecs, '', {}, {}, {}, '', '');
+plot_eigenvector_weights_bar_plot(A, 1, n_request_eigvecs);
 ```
 
 ![Screenshot](example_quick.png)

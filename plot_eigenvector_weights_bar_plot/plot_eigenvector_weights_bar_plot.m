@@ -108,27 +108,32 @@ end
 
 n_weights = n_weights/n_mode_sets;
 
-if ~exist('destination') || isempty(destination)
+if ~exist('destination', 'var') || isempty(destination)
     destination = '';
 end
 
 % Create default mode name:
-if isempty(mode_name)
+if ~exist('mode_name', 'var') || isempty(mode_name)
     mode_name = 'mode';
 end
 
 % Create default annotations:
-if isempty(annotations)
+if ~exist('annotations', 'var') || isempty(annotations)
     annotations = {'$\rm{W_1}$'};
     for i = 2:1:n_weights
         annotations = [annotations, ['$\rm{W_{', num2str(i), '}}$']];
     end
 end
 
+% Default prefix is none:
+if ~exist('prefix', 'var') || isempty(prefix)
+  prefix = '';
+end
+
 % Create default grayscale colors:
 first_color = 0; last_color = 0.9 - 0.4/n_mode_sets;
 
-if isempty(colors)
+if ~exist('colors', 'var') || isempty(colors)
     colors = [];
     for i = 1:1:n_mode_sets
         if i == 1
