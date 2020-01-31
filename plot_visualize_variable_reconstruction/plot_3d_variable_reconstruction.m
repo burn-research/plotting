@@ -54,14 +54,14 @@ if isempty(z_name)
 end
 
 % Plotting parameters:
-marker_size_original = 3;
-marker_size_reconstructed = 5;
+marker_size_original = 1;
+marker_size_reconstructed = 8;
 marker_size_legend = 15;
 original_c = [0 0 0]./256;
 reconstruction_c = [255,111,89]./256;
 fontsize_axes = 22;
-fontsize_label = 30;
-fontsize_legend = 26;
+fontsize_label = 50;
+fontsize_legend = 46;
 fontsize_ann = 32;
 text_size = 26;
 
