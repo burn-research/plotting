@@ -45,7 +45,7 @@ set(cb, 'YTick', [ceil(min(variable)*10)/10:0.1:floor(max(variable)*10)/10])
 caxis([min(variable) max(variable)]);
 
 % Save plot:
-filename = [destination, 'field.eps'];
-saveas(gcf, filename, 'epsc');
+filename = [destination, 'field.png'];
+saveas(gcf, filename, 'png');
 
 end

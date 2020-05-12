@@ -73,8 +73,10 @@ marker_size = 500;
 linewidth = 1;
 
 colors = [
-[0 0 0]
-[203,203,203]]./256;
+[242,93,93]
+[255,230,77]
+[142,204,126]
+[84,141,219]]./256;
 
 %% Plot and save:
 for line = 1:1:n_sets
@@ -84,15 +86,15 @@ for line = 1:1:n_sets
     
     figure(1);
     set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, 0.8, 1])
-    s = scatter(x_range, set_matrix, marker_size, colors(line,:), char(markers(line)), 'filled', 'LineWidth', linewidth); hold on
+    s = scatter([2,4,8,16], set_matrix, marker_size, colors(line,:), char(markers(line)), 'filled', 'LineWidth', linewidth); hold on
     set(gca, 'FontSize', fontsize_axes); box on; grid on
     xticklabels(annotations)
     xtickangle(90)
     ylabel([value_name, ' [-]'], 'FontSize', fontsize_label)
-    xticks(x_range)
-    xlim([0, n_vars+1])
-    ylim(ylims)
-    yticks([0:0.2:1])
+    xticks([2,4,8,16])
+    xlim([0, 18])
+%     ylim(ylims)
+%     yticks([0:0.2:1])
     
 end
 

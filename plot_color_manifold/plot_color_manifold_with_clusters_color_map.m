@@ -1,4 +1,4 @@
-function [] = plot_color_manifold_with_clusters_color_map(X, Y, idx, destination)
+function [] = plot_color_manifold_with_clusters_color_map(X, Y, idx, x_label, y_label, destination)
 % This function colours a 2D manifold with a prescribed colormap.
 %
 % Inputs: ---
@@ -37,12 +37,14 @@ end
 
 set(gca, 'FontSize', fontsize_axes);
 box on, grid on
-xlim([0, 1]), ylim([min(Y), 2100]);
-xlabel(['Mixture fraction [-]'], 'FontSize', fontsize_label), ylabel(['Temperature [K]'], 'FontSize', fontsize_label);
-xticks(0:0.2:1)
+% xlim([0, 1]), ylim([min(Y), 2100]);
+xlabel(x_label, 'FontSize', fontsize_label), ylabel(y_label, 'FontSize', fontsize_label);
+% xticks([-0.5:0.5:1])
+% yticks([0:1:3])
+xlim([1.05*min(X), 1.05*max(X)]), ylim([1.05*min(Y), 1.05*max(Y)]);
 colormap(parula(k));
 
-[l, hobj, hout, mout] = legend(legend_labels, 'Location', 'northeast', 'FontSize', fontsize_legend);
+[l, hobj, hout, mout] = legend(legend_labels, 'Location', 'northwest', 'FontSize', fontsize_legend);
 
 M = findobj(hobj, 'type', 'patch');
 set(M, 'MarkerSize', 25);

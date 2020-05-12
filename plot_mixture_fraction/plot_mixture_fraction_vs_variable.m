@@ -21,8 +21,8 @@ Inputs: ---
 %% Plotting parameters:
 fontsize_axes = 44;
 fontsize_label = 54;
-marker_size = 10;
-np = 50000;
+marker_size = 60;
+np = 10000;
 
 % Sample at random np points:
 var_Z = [Z, var];

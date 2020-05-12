@@ -23,10 +23,10 @@ function [] = plot_mixture_fraction_divided_to_clusters(T, Z, idx, np, y_label_t
 
 
 %% Plotting parameters:
-fontsize_axes = 44;
+fontsize_axes = 35;
 fontsize_label = 54;
-fontsize_legend = 40;
-marker_size = 2;
+fontsize_legend = 50;
+marker_size = 50;
 legend_labels = {};
 k = max(idx);
 colors = colormap(parula(k));
@@ -50,6 +50,8 @@ for i = 1:1:k
 end
 
 set(gca, 'FontSize', fontsize_axes);
+yticks([0, 500, 1000, 1500, 2000, 2500])
+ylim([0, 2500])
 box on, grid on
 
 [l, hobj, hout, mout] = legend(legend_labels, 'Location', 'northeast', 'FontSize', fontsize_legend);
@@ -66,4 +68,4 @@ xlabel(['Mixture fraction [-]'], 'FontSize', fontsize_label), ylabel([y_label_te
 hold off
 
 % Save plot:
-print(gcf, [destination, 'mixture_fraction_temperature.png'], '-dpng', '-r300');
+print(gcf, [destination], '-dpng', '-r300');

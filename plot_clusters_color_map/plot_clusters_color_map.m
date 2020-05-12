@@ -44,7 +44,7 @@ cb.FontName = 'cmr10';
 set(cb, 'ticks', (1+0.5*(k-1)/k):((k-1)/k):(k - 0.5*(k-1)/k), 'ticklabels', cluster_range);
 
 % Save plot:
-filename = [destination, 'clusters_map.eps'];
-saveas(gcf, filename, 'epsc');
+filename = [destination, 'clusters_map.png'];
+saveas(gcf, filename, 'png');
 
 end

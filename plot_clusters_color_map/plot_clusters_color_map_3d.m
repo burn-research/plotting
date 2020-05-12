@@ -1,4 +1,4 @@
-function [] = plot_clusters_color_map_3d(x, y, z, x_name, y_name, z_name, idx, camera_view, destination)
+function [] = plot_clusters_color_map_3d(x, y, z, x_name, y_name, z_name, idx, idx_subset, camera_view, destination)
 % This function plots a color map for clusters division on a 3D scatter plot.
 %
 % Input:
@@ -35,11 +35,14 @@ function [] = plot_clusters_color_map_3d(x, y, z, x_name, y_name, z_name, idx, c
 
 %% plot_clusters_color_map_3d
 % Plotting parameters:
-marker_size = 5;
+marker_size = 15;
 marker_size_legend = 15;
+marker_size_subset = 30;
 fontsize_axes = 22;
 fontsize_label = 50;
 fontsize_legend = 46;
+
+subset_color = [38,38,38]./256;
 
 k = length(unique(idx));
 
@@ -51,7 +54,7 @@ set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, 0.8, 0.8]);
 for i = 1:1:k
 
     scatter3(x(idx==i), y(idx==i), z(idx==i), marker_size, idx(idx==i), 'o', 'filled'), hold on
-    
+   
     % Append to legend:
     legend_labels{i} = ['Cluster $k_{', num2str(i), '}$'];
 
@@ -77,6 +80,10 @@ objhl = findobj(hobj, 'type', 'text');
 set(objhl, 'FontSize', fontsize_legend);
 set(objhl, 'FontName', 'cmr10')
 set(objhl, 'interpreter', 'latex')
+
+if exist('idx_subset', 'var') || ~isempty(idx_subset)
+    scatter3(x(idx_subset), y(idx_subset), z(idx_subset), marker_size_subset, subset_color, 'o', 'filled')
+end
 
 % Save plot:
 filename = [destination, 'clusters_map_3d.png'];

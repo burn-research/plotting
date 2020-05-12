@@ -203,7 +203,7 @@ for i=1:1:n_request_eigvecs
         end
     end
 
-    xticklabels([]); yticks(-1:0.2:1)
+    xticklabels([]); yticks(-1:0.5:1)
     ylabel(['Weights on ', mode_name, '-', num2str(i), prefix, ' [-]'], 'FontSize', fontsize_label);
     ylim([-1 1]), xlim([0 n_weights+1])
     grid 'on'
