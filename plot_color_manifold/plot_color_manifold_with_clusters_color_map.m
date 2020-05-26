@@ -31,7 +31,7 @@ figure();
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0, 0, 0.7, 1]);
 
 for i = 1:1:k
-    scatter(X(idx==i), Y(idx==i), 2, idx(idx==i), 'filled'); hold on
+    scatter(X(idx==i), Y(idx==i), 10, idx(idx==i), 'filled'); hold on
     legend_labels{i} = ['Cluster $k_', num2str(i), '$'];
 end
 
@@ -44,7 +44,7 @@ xlabel(x_label, 'FontSize', fontsize_label), ylabel(y_label, 'FontSize', fontsiz
 xlim([1.05*min(X), 1.05*max(X)]), ylim([1.05*min(Y), 1.05*max(Y)]);
 colormap(parula(k));
 
-[l, hobj, hout, mout] = legend(legend_labels, 'Location', 'northwest', 'FontSize', fontsize_legend);
+[l, hobj, hout, mout] = legend(legend_labels, 'Location', 'northeast', 'FontSize', fontsize_legend);
 
 M = findobj(hobj, 'type', 'patch');
 set(M, 'MarkerSize', 25);

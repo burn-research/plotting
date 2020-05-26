@@ -148,9 +148,9 @@ end
 
 %% Plotting parameters:
 fontsize_axes = 32;
-fontsize_label = 44;
-fontsize_legend = 40;
-text_size = 44;
+fontsize_label = 32;
+fontsize_legend = 32;
+text_size = 14;
 
 %% Bar plot of a single eigenvector:
 for i=1:1:n_request_eigvecs
@@ -204,7 +204,7 @@ for i=1:1:n_request_eigvecs
     end
 
     xticklabels([]); yticks(-1:0.5:1)
-    ylabel(['Weights on ', mode_name, '-', num2str(i), prefix, ' [-]'], 'FontSize', fontsize_label);
+    ylabel([mode_name, '-', num2str(i), prefix, ' [-]'], 'FontSize', fontsize_label);
     ylim([-1 1]), xlim([0 n_weights+1])
     grid 'on'
 
