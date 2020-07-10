@@ -1,4 +1,4 @@
-function [] = plot_color_manifold_with_clusters_color_map(X, Y, idx, x_label, y_label, destination)
+function [] = plot_color_manifold_with_clusters_color_map(X, Y, idx, x_label, y_label, title_text, destination)
 % This function colours a 2D manifold with a prescribed colormap.
 %
 % Inputs: ---
@@ -20,9 +20,10 @@ function [] = plot_color_manifold_with_clusters_color_map(X, Y, idx, x_label, y_
 %       plot saving destination.
 
 %% Plotting parameters:
-fontsize_axes = 44;
-fontsize_label = 54;
+fontsize_axes = 30;
+fontsize_label = 40;
 fontsize_legend = 40;
+fontsize_title = 20;
 linewidth = 1.5;
 
 k = max(idx);
@@ -40,9 +41,14 @@ box on, grid on
 % xlim([0, 1]), ylim([min(Y), 2100]);
 xlabel(x_label, 'FontSize', fontsize_label), ylabel(y_label, 'FontSize', fontsize_label);
 % xticks([-0.5:0.5:1])
-% yticks([0:1:3])
-xlim([1.05*min(X), 1.05*max(X)]), ylim([1.05*min(Y), 1.05*max(Y)]);
+yticks([0:500:2500])
+ylim([0,2500])
+xlim([1.05*min(X), 1.05*max(X)]), %ylim([1.05*min(Y), 1.05*max(Y)]);
 colormap(parula(k));
+
+if exist('title_text', 'var') || ~isempty(title_text)
+    title(title_text, 'FontSize', fontsize_legend);
+end
 
 [l, hobj, hout, mout] = legend(legend_labels, 'Location', 'northeast', 'FontSize', fontsize_legend);
 
